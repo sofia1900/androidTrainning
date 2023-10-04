@@ -24,6 +24,7 @@ class xmlLocalDataSource (private val context : Context){
             with(sharedPref.edit()){
                 putString("username", user.name)
                 putString("surname", user.userName)
+                putString("age", user.age)
                 apply()
             }
             return true.right()
