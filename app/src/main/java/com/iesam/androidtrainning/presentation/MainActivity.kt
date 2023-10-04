@@ -7,10 +7,14 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.activity.viewModels
 import com.iesam.androidtrainning.R
+import com.iesam.androidtrainning.data.UserDataRepository
+import com.iesam.androidtrainning.domain.SaveUserUseCase
 
 class MainActivity : AppCompatActivity() {
 
-    val viewModels : MainViewModel by viewModels()
+    val viewModels : MainViewModel = MainViewModel(
+        SaveUserUseCase(UserDataRepository())
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form)

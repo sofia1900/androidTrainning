@@ -6,6 +6,6 @@ import com.iesam.androidtrainning.domain.SaveUserUseCase
 class MainViewModel (private val saveUserUseCase : SaveUserUseCase) : ViewModel(){
 
     fun saveUser(name : String, surname : String){
-        saveUserUseCase(name, surname)
+        val result = saveUserUseCase(name, surname)
     }
 }
