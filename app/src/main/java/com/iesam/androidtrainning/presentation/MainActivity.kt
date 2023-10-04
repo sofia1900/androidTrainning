@@ -20,10 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupView(){
         val actionButton = findViewById<Button>(R.id.action_save)
-        actionButton.setOnClickListener {
-            Log.d("@dev", "Name: ${this.getNameInput()}")
-            Log.d("@dev", "Surname: ${this.getSurnameInput()}")
-        }
+        actionButton.setOnClickListener {viewModels.saveUser(getNameInput(), getSurnameInput())}
     }
 
 
