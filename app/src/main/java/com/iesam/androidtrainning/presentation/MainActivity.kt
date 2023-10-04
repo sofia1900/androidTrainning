@@ -2,19 +2,21 @@ package com.iesam.androidtrainning.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import androidx.activity.viewModels
 import com.iesam.androidtrainning.R
 import com.iesam.androidtrainning.data.UserDataRepository
+import com.iesam.androidtrainning.data.local.xmlLocalDataSource
 import com.iesam.androidtrainning.domain.SaveUserUseCase
+import com.iesam.androidtrainning.domain.User
 
 class MainActivity : AppCompatActivity() {
 
-    val viewModels : MainViewModel = MainViewModel(
-        SaveUserUseCase(UserDataRepository())
-    )
+    val viewModels : MainViewModel  by lazy{
+        MainViewModel (
+            SaveUserUseCase(UserDataRepository(xmlLocalDataSource(this)))
+        )
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form)
@@ -24,7 +26,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupView(){
         val actionButton = findViewById<Button>(R.id.action_save)
-        actionButton.setOnClickListener {viewModels.saveUser(getNameInput(), getSurnameInput())}
+        val user = User(getNameInput(),  getSurnameInput(), getAge())
+        actionButton.setOnClickListener {viewModels.saveUser(user)}
     }
 
     private fun getNameInput() : String =
@@ -34,5 +37,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<EditText>(R.id.input_surname).text.toString()
 
 
+    private fun getAge() : String =
+        findViewById<EditText>(R.id.input_age).text.toString()
 }
 
