@@ -11,6 +11,7 @@
 
 
         <EditText
+            android:id="@+id/input_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -21,11 +22,13 @@
 
 
         <EditText
+            android:id="@+id/input_surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
 
         <Button
+            android:id="@+id/action_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/action_save" />
