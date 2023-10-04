@@ -10,4 +10,7 @@ class SaveUserUseCase (private val repository: UserRepository){
     }
 }
 
+//Se mete aqui porque solo se utiliza cuando se utiliza el caso de uso
+//Se deberia de llamar INPUT porque no es un modelo de algo, sino que son
+//datos en si.
 data class User (val name : String, val userName : String, val age : String)
