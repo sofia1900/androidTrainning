@@ -19,14 +19,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form)
         setupView()
-
     }
+
 
     private fun setupView(){
         val actionButton = findViewById<Button>(R.id.action_save)
         actionButton.setOnClickListener {viewModels.saveUser(getNameInput(), getSurnameInput())}
     }
-
 
     private fun getNameInput() : String =
         findViewById<EditText>(R.id.input_name).text.toString()
