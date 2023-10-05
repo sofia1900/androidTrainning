@@ -12,7 +12,7 @@ import com.iesam.androidtrainning.domain.User
 
 class MainActivity : AppCompatActivity() {
 
-    val viewModels : MainViewModel  by lazy{
+    val viewModels : MainViewModel by lazy {
         MainViewModel (
             SaveUserUseCase(UserDataRepository(xmlLocalDataSource(this)))
         )
