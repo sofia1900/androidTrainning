@@ -5,5 +5,7 @@
     <string name="label_date_born">Edad</string>
     <string name="label_age">Edad</string>
     <string name="action_save">Guardar</string>
+    <string name="action_get">Recuperar</string>
+    <string name="action_clean">Limpiar</string>
 </resources>
 

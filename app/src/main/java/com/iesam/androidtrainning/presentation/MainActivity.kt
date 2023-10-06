@@ -1,6 +1,6 @@
 package com.iesam.androidtrainning.presentation
 
-import android.database.Observable
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -25,16 +25,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form)
         setupView()
-        //setupObservers()   //SUSCRIPCION
-        //viewModels.getUser()  //EJECUTO EL HILO SECUNDARIO PARA RECOGER LA INFORMACION
     }
 
 
     private fun setupView(){
-        val actionButton = findViewById<Button>(R.id.action_save)
-        actionButton.setOnClickListener {
+        val actionButtonSave = findViewById<Button>(R.id.action_save)
+        actionButtonSave.setOnClickListener {
             viewModels.saveUser(getNameInput(), getSurnameInput(), getAgeInput())
         }
+
+        val actionButtonGet = findViewById<Button>(R.id.action_get)
+        actionButtonGet.setOnClickListener {
+            setupObservers() //SUSCRIPCION
+            viewModels.getUser() //EJECUTO EL HILO SECUNDARIO PARA RECOGER LA INFORMACION
+        }
+
     }
 
     private fun getNameInput() : String =
