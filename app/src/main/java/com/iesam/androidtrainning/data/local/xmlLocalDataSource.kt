@@ -23,6 +23,7 @@ class xmlLocalDataSource (private val context : Context){
 
         return try{
             with(sharedPref.edit()){
+                putInt("id", (1..100).random())
                 putString("username", input.name)
                 putString("surname", input.userName)
                 putString("age", input.age)
