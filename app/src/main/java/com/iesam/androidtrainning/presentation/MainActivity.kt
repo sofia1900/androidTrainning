@@ -26,8 +26,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupView(){
         val actionButton = findViewById<Button>(R.id.action_save)
-        val user = User(getNameInput(),  getSurnameInput(), getAge())
-        actionButton.setOnClickListener {viewModels.saveUser(user)}
+        actionButton.setOnClickListener {
+            viewModels.saveUser(getNameInput(), getSurnameInput(), getAgeInput())
+        }
     }
 
     private fun getNameInput() : String =
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<EditText>(R.id.input_surname).text.toString()
 
 
-    private fun getAge() : String =
+    private fun getAgeInput() : String =
         findViewById<EditText>(R.id.input_age).text.toString()
 }
 
