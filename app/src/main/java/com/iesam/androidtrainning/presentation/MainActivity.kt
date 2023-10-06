@@ -15,7 +15,7 @@ import com.iesam.androidtrainning.domain.User
 
 class MainActivity : AppCompatActivity() {
 
-    val viewModels : MainViewModel  by lazy{
+    val viewModels : MainViewModel by lazy {
         MainViewModel (
             SaveUserUseCase(UserDataRepository(xmlLocalDataSource(this))),
             GetUserUseCase(UserDataRepository(xmlLocalDataSource(this)))
@@ -40,6 +40,18 @@ class MainActivity : AppCompatActivity() {
             viewModels.getUser() //EJECUTO EL HILO SECUNDARIO PARA RECOGER LA INFORMACION
         }
 
+        val actionButtonClean = findViewById<Button>(R.id.action_clean)
+        actionButtonClean.setOnClickListener {
+            //NUNCA actualizar la vista en el hilo SECUNDARIO
+            cleanInput()
+        }
+
+    }
+
+    private fun cleanInput (){
+        findViewById<EditText>(R.id.input_name).setText("")
+        findViewById<EditText>(R.id.input_surname).setText("")
+        findViewById<EditText>(R.id.input_age).setText("")
     }
 
     private fun getNameInput() : String =
@@ -52,6 +64,19 @@ class MainActivity : AppCompatActivity() {
     private fun getAgeInput() : String =
         findViewById<EditText>(R.id.input_age).text.toString()
 
+
+
+    private fun setNameInput(name: String) {
+        findViewById<EditText>(R.id.input_name).setText(name)
+    }
+
+    private fun setSurnameInput(surname: String) {
+        findViewById<EditText>(R.id.input_surname).setText(surname)
+    }
+
+    private fun setAgeInput(age: String) {
+        findViewById<EditText>(R.id.input_age).setText(age)
+    }
 
     private fun setupObservers(){
         val observer = Observer<MainViewModel.UiState>{
@@ -66,18 +91,6 @@ class MainActivity : AppCompatActivity() {
         setNameInput(user.username)
         setSurnameInput(user.surname)
         setAgeInput(user.age)
-    }
-
-    private fun setNameInput(name: String) {
-        findViewById<EditText>(R.id.input_name).setText(name)
-    }
-
-    private fun setSurnameInput(surname: String) {
-        findViewById<EditText>(R.id.input_surname).setText(surname)
-    }
-
-    private fun setAgeInput(age: String) {
-        findViewById<EditText>(R.id.input_age).setText(age)
     }
 }
 

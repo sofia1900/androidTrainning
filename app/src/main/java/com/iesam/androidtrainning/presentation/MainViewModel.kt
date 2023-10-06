@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel (private val saveUserUseCase : SaveUserUseCase,
-    private val getUserUseCase: GetUserUseCase) : ViewModel(){
+                     private val getUserUseCase: GetUserUseCase) : ViewModel(){
 
     private val _uiState = MutableLiveData<UiState>()
     val uiState : LiveData<UiState> = _uiState
