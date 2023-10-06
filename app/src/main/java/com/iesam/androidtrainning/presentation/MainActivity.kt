@@ -15,7 +15,7 @@ import com.iesam.androidtrainning.domain.User
 
 class MainActivity : AppCompatActivity() {
 
-    val viewModels : MainViewModel by lazy {
+    private val viewModels : MainViewModel by lazy {
         MainViewModel (
             SaveUserUseCase(UserDataRepository(xmlLocalDataSource(this))),
             GetUserUseCase(UserDataRepository(xmlLocalDataSource(this)))
@@ -93,4 +93,3 @@ class MainActivity : AppCompatActivity() {
         setAgeInput(user.age)
     }
 }
-
