@@ -5,6 +5,7 @@ import com.iesam.kotlintrainning.Either
 
 interface UserRepository {
 
-    fun save(user : User) : Either<ErrorApp, Boolean>
+    fun save(input : SaveUserUseCase.Input) : Either<ErrorApp, Boolean>
+    fun get() : Either<ErrorApp, User>
 
 }

@@ -1,16 +1,18 @@
 package com.iesam.androidtrainning.presentation
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.iesam.androidtrainning.app.ErrorApp
 import com.iesam.androidtrainning.domain.SaveUserUseCase
-import com.iesam.androidtrainning.domain.User
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainViewModel (private val saveUserUseCase : SaveUserUseCase) : ViewModel(){
 
-    fun saveUser(user : User){
-        saveUserUseCase(user).fold(
-            {responseError(it)},
-            {responseSuccess(it)}
+    fun saveUser(name: String, surname: String, date: String) {
+        saveUserUseCase(SaveUserUseCase.Input(name, surname, date)).fold(
+            { responseError(it) },
+            { responseSuccess(it) }
         )
     }
 

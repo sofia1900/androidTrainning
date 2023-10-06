@@ -8,9 +8,11 @@ import com.iesam.androidtrainning.R
 import com.iesam.androidtrainning.data.UserDataRepository
 import com.iesam.androidtrainning.data.local.xmlLocalDataSource
 import com.iesam.androidtrainning.domain.SaveUserUseCase
-import com.iesam.androidtrainning.domain.User
+import androidx.activity.viewModels
 
 class MainActivity : AppCompatActivity() {
+
+    //val viewModels : MainViewModel by viewModels()
 
     val viewModels : MainViewModel  by lazy{
         MainViewModel (
@@ -26,8 +28,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupView(){
         val actionButton = findViewById<Button>(R.id.action_save)
-        val user = User(getNameInput(),  getSurnameInput(), getAge())
-        actionButton.setOnClickListener {viewModels.saveUser(user)}
+        actionButton.setOnClickListener {
+            viewModels.saveUser(getNameInput(), getSurnameInput(), getAgeInput())
+        }
     }
 
     private fun getNameInput() : String =
@@ -37,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<EditText>(R.id.input_surname).text.toString()
 
 
-    private fun getAge() : String =
+    private fun getAgeInput() : String =
         findViewById<EditText>(R.id.input_age).text.toString()
 }
 
