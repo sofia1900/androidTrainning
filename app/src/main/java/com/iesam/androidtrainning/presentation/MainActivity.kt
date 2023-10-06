@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form)
         setupView()
-        setupObservers()
-
+        //setupObservers()   //SUSCRIPCION
+        //viewModels.getUser()  //EJECUTO EL HILO SECUNDARIO PARA RECOGER LA INFORMACION
     }
 
 
